@@ -1,0 +1,4 @@
+Flask==3.0.2
+Flask-Mailman==1.0.8
+Celery==5.3.6
+redis==5.0.1

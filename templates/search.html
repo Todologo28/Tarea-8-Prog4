@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Recetas</title>
+</head>
+<body>
+<h1>Buscar Recetas</h1>
+<form method="POST">
+    <label for="search_term">Buscar por nombre:</label>
+    <input type="text" id="search_term" name="search_term" required>
+    <button type="submit">Buscar</button>
+</form>
+
+{% if recipes %}
+<h2>Resultados:</h2>
+<ul>
+    {% for recipe in recipes %}
+    <li>
+        <h2>{{ recipe['name'] }}</h2>
+        <p><strong>Ingredientes:</strong> {{ recipe['ingredients'] }}</p>
+        <p><strong>Pasos:</strong> {{ recipe['steps'] }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No se encontraron recetas.</p>
+{% endif %}
+</body>
+</html>

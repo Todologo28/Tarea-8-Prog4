@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recetas</title>
+</head>
+<body>
+<h1>Lista de Recetas</h1>
+<a href="{{ url_for('create_recipe') }}">Agregar nueva receta</a>
+<ul>
+    {% for recipe in recipes %}
+    <li>
+        <h2>{{ recipe['name'] }}</h2>
+        <p><strong>Ingredientes:</strong> {{ recipe['ingredients'] }}</p>
+        <p><strong>Pasos:</strong> {{ recipe['steps'] }}</p>
+        <a href="{{ url_for('update_recipe', recipe_id=recipe['_id']) }}">Editar</a> |
+        <a href="{{ url_for('delete_recipe', recipe_id=recipe['_id']) }}">Eliminar</a>
+    </li>
+    {% else %}
+    <p>No hay recetas disponibles.</p>
+    {% endfor %}
+</ul>
+</body>
+</html>
